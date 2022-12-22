@@ -99,11 +99,10 @@ public class MeetingService {
     }
 
     public List<MeetingDto> filterByDescription(List<MeetingDto> res, String description) {
-        var result = res.stream()
+        return res.stream()
                 .collect(Collectors.filtering(
                     x -> x.getDescription().toLowerCase().contains(description.toLowerCase()),
                         Collectors.toList()));
-        return (result.size() > 0) ? result : res;
     }
 
     public List<MeetingDto> filterByCategory(List<MeetingDto> res, CategoryDto category) {
