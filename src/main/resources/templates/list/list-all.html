@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>list-books</title>
+    <style>
+        th, td {
+            padding: 5px;
+        }
+    </style>
+</head>
+<body>
+<h3>List of all meetings: </h3>
+<hr>
+<table>
+    <thead>
+    <form action="#"
+          th:action="@{/filter_by}"
+          th:object="${filterDto}"
+          method="post">
+        <tr>
+            <td th:text="${error_message_start_time} ?: ''" style="color: red" colspan="3"></td>
+        </tr>
+        <tr>
+            <td><strong>Filter by: </strong></td>
+            <td><input type="text" th:field="*{description}" id="description" placeholder="Description"></td>
+            <td>
+                <select id="category" th:field="*{category}">
+                    <option th:each="category : ${T(com.assessment.meeting.utils.CategoryDto).values()}"
+                            th:value="${category}" th:text="${category.getValueName}"></option>
+                </select>
+            </td>
+            <td>
+                <select id="type" th:field="*{type}">
+                    <option th:each="type : ${T(com.assessment.meeting.utils.TypeDto).values()}"
+                            th:value="${type}" th:text="${type.getValueName}"></option>
+                </select>
+            </td>
+            <td align="center">
+                <input type="date" th:field="*{startDate}" id="startDate"/>
+            </td>
+            <td align="center">
+                <input type="date" th:field="*{endDate}" id="endDate"/>
+            </td>
+            <td>
+                <select id="numberOfPersons" th:field="*{numberOfPersons}">
+                    <option th:value=0 th:text="'Persons:'"></option>
+                    <option th:each="i : ${#numbers.sequence(1, 9)}" th:value="${i}" th:text="${i}"></option>
+                    <option th:value=10 th:text="'>10'"></option>
+                </select>
+            </td>
+            <td><input type="submit" value="Filter"></td>
+    </form>
+            <td>
+                <form th:action="@{/list_all_meetings}">
+                    <input type="submit" value="Reset" />
+                </form>
+            </td>
+        </tr>
+        <tr><td colspan="10"><hr></td></tr>
+    </thead>
+    <tbody>
+    <tr>
+        <th align="center"><strong>Name</strong></th>
+        <th align="center"><strong>Description</strong></th>
+        <th align="center"><strong>Category</strong></th>
+        <th align="center"><strong>Type</strong></th>
+        <th align="center"><strong>Start time</strong></th>
+        <th align="center"><strong>End time</strong></th>
+    </tr>
+    <tr th:each="meeting : ${allMeetings}">
+        <td th:text="${meeting.name}"></td>
+        <td th:text="${meeting.description}"></td>
+        <td>
+            <th:block th:switch="${meeting.category}"
+                      th:with="Category=${T(com.assessment.meeting.models.Category)}">
+                <span th:case="${Category.CODE_MONKEY}"><strong>CodeMonkey</strong></span>
+                <span th:case="${Category.HUB}"><strong>Hub</strong></span>
+                <span th:case="${Category.SHORT}"><strong>Short</strong></span>
+                <span th:case="${Category.TEAM_BUILDING}"><strong>TeamBuilding</strong></span>
+            </th:block>
+        </td>
+        <td>
+            <th:block th:switch="${meeting.type}"
+                      th:with="Type=${T(com.assessment.meeting.models.Type)}">
+                <span th:case="${Type.LIVE}"><strong>Live</strong></span>
+                <span th:case="${Type.IN_PERSON}"><strong>InPerson</strong></span>
+            </th:block>
+        </td>
+        <td th:text="${#calendars.format(meeting.startDate, 'yyyy-MM-dd HH:mm')}"></td>
+        <td th:text="${#calendars.format(meeting.EndDate, 'yyyy-MM-dd HH:mm')}"></td>
+        <!-- DELETE STRING WITH PERSONS-->
+        <!--<td th:text="${meeting.persons}" style="width:9%"></td>-->
+        <td>
+            <form th:action="@{/list_persons/{name}(name=${meeting.name})}">
+                <input type="submit" value="Participants"/>
+            </form>
+            <!--<a th:href="@{/list_persons(name=${meeting.name})}">Participants list</a>-->
+        </td>
+        <td>
+            <form th:action="@{/delete_meeting/{name}(name=${meeting.name})}">
+                <input type="submit" value="Delete meeting" />
+            </form>
+        </td>
+    </tr>
+    </tbody>
+</table>
+<hr>
+<p><a href="/">Back</a></p>
+</body>
+</html>

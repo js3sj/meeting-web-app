@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>list-books</title>
+    <style>
+        th, td {
+            padding: 5px;
+        }
+    </style>
+</head>
+<body>
+<h3>Participants in the meeting:</h3>
+<hr>
+<table>
+    <thead>
+    <tr>
+        <th>First name</th>
+        <th>Last name</th>
+        <th>Date added</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="person : ${meeting.personList}">
+        <td th:text="${person.firstName}"></td>
+        <td th:text="${person.lastName}"></td>
+        <td th:text="${#calendars.format(person.date, 'yyyy-MM-dd HH:mm')}"></td>
+        <td>
+            <span th:if="!${person.responsible}">
+                <form th:action="@{/delete_person/{firstName}/{lastName}
+                                (firstName=${person.firstName}, lastName=${person.lastName})}">
+                    <input type="submit" value="Delete" />
+                </form>
+            </span>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <form th:action="@{/add_person}">
+                <input type="submit" value="Add a person" />
+            </form>
+        </td>
+    </tr>
+    <tr>
+        <td th:text="${confirm_message_person_removed} ?: ''" style="color: red" colspan="4"></td>
+    </tr>
+    </tbody>
+</table>
+<hr>
+<a href="/list_all_meetings">Back</a> |
+<a href="/">Back to index</a>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>add-person-confirm</title>
+    <style>
+        th, td {
+            padding: 5px;
+        }
+    </style>
+</head>
+<body>
+<h3>New Person successfully added:</h3>
+<hr>
+<div>
+    <table>
+        <thead>
+        </thead>
+        <tbody>
+        <tr>
+            <td>First name: </td>
+            <td th:text="${person.firstName}"></td>
+        </tr>
+        <tr>
+            <td>Last name: </td>
+            <td th:text="${person.lastName}"></td>
+        </tr>
+        <tr>
+            <td>Date added: </td>
+            <td th:text="${#calendars.format(person.date, 'yyyy-MM-dd HH:mm')}"></td>
+        </tr>
+        <tr>
+            <td>
+                <form th:action="@{/add_person}">
+                    <input type="submit" value="Add new person" />
+                </form>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<hr>
+<a th:href="@{/list_persons/}">Back to persons list</a> |
+<a th:href="@{/list_all_meetings}">Back to meetings list</a> |
+<a href="/">Back to index</a>
+</body>
+</html>

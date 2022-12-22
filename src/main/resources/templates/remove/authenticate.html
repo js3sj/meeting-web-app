@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="UTF-8">
+  <title>add-person</title>
+  <style>
+        th, td {
+            padding: 5px;
+        }
+    </style>
+</head>
+<body>
+<h3>Please enter Responsible person details:</h3>
+<hr>
+<form action="#"
+      th:action="@{/delete_meeting}"
+      th:object="${person}"
+      method="post">
+  <table>
+    <tbody>
+    <tr>
+      <td th:text="${error_message_auth_person} ?: ''" style="color: red" colspan="3"></td>
+    </tr>
+    <tr>
+      <td><label for="firstName">First name</label></td>
+      <td><input type="text" th:field="*{firstName}" id="firstName" placeholder="First name"></td>
+      <td><span th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}" style="color: red"></span></td>
+    </tr>
+    <tr>
+      <td><label for="lastName">Last name</label></td>
+      <td><input type="text" th:field="*{lastName}" id="lastName" placeholder="Last name"></td>
+      <td><span th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}" style="color: red"></span></td>
+    </tr>
+    <tr>
+      <td><input type="submit" value="Submit"></td>
+      <td></td>
+      <td></td>
+    </tr>
+    </tbody>
+  </table>
+</form>
+<hr>
+<a th:href="@{/list_all_meetings}">Back</a> |
+<a href="/">Back to index</a>
+</body>
+</html>

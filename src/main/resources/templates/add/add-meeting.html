@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>add-meeting</title>
+    <style>
+        th, td {
+            padding: 5px;
+        }
+    </style>
+</head>
+<body>
+<h3>DETAILS FOR A NEW MEETING:</h3>
+<hr>
+<form action="#"
+      th:action="@{/add_meeting}"
+      th:object="${meetingDto}"
+      method="post">
+    <table>
+        <tbody>
+        <tr>
+            <td th:text="${error_message_title} ?: ''" style="color: red" colspan="3"></td>
+        </tr>
+        <tr>
+            <td><label for="name">Name</label></td>
+            <td><input type="text" th:field="*{name}" id="name" placeholder="Name"></td>
+            <td><span th:if="${#fields.hasErrors('name')}" th:errors="*{name}" style="color: red"></span></td>
+        </tr>
+        <tr>
+            <td><strong>Responsible person: </strong></td>
+        </tr>
+        <tr>
+            <td><label for="personsFirstName">First name</label></td>
+            <td><input type="text" th:field="*{personsFirstName}" id="personsFirstName" placeholder="First Name"></td>
+            <td><span th:if="${#fields.hasErrors('personsFirstName')}" th:errors="*{personsFirstName}" style="color: red"></span></td>
+        </tr>
+        <tr>
+            <td><label for="personsLastName">Last name</label></td>
+            <td><input type="text" th:field="*{personsLastName}" id="personsLastName" placeholder="Last Name"></td>
+            <td><span th:if="${#fields.hasErrors('personsLastName')}" th:errors="*{personsLastName}" style="color: red"></span></td>
+        </tr>
+        <tr>
+            <td><label for="description">Description</label></td>
+            <td><input type="text" th:field="*{description}" id="description" placeholder="Description"></td>
+            <td><span th:if="${#fields.hasErrors('description')}" th:errors="*{description}" style="color: red"></span></td>
+        </tr>
+        <tr>
+            <td><label for="category">Category</label></td>
+            <td><select id="category" th:field="*{category}">
+                <option th:each="category : ${T(com.assessment.meeting.models.Category).values()}"
+                        th:value="${category}" th:text="${category.getValueName}"></option>
+            </select>
+            </td>
+        </tr>
+        <tr>
+            <td><label for="type">Type</label></td>
+            <td><select id="type" th:field="*{type}">
+                <option th:each="type : ${T(com.assessment.meeting.models.Type).values()}"
+                        th:value="${type}" th:text="${type.getValueName}"></option>
+            </select>
+            </td>
+        </tr>
+        <tr>
+            <td th:text="${error_message_start_time} ?: ''" style="color: red" colspan="3"></td>
+        </tr>
+        <tr>
+            <td><label for="startDate">Start date: </label></td>
+            <td><input type="datetime-local" th:field="*{startDate}" id="startDate" required
+                       th:min="${#calendars.format(#calendars.createNow(), 'yyyy-MM-dd''T''HH:mm')}"
+                       th:value="${#calendars.format(#calendars.createNow(), 'yyyy-MM-dd''T''HH:mm')}"
+            /></td>
+            <td><span th:if="${#fields.hasErrors('startDate')}" th:errors="*{startDate}" style="color: red"></span></td>
+        </tr>
+        <tr>
+            <td><label for="endDate">End date: </label></td>
+            <td><input type="datetime-local" th:field="*{endDate}" id="endDate" required
+                       th:min="${#calendars.format(#calendars.createNow(), 'yyyy-MM-dd''T''HH:mm')}"
+            /></td>
+            <td><span th:if="${#fields.hasErrors('endDate')}" th:errors="*{endDate}" style="color: red"></span></td>
+        </tr>
+        <tr>
+            <td><input type="submit" value="Add"></td>
+            <td></td>
+            <td></td>
+        </tr>
+        </tbody>
+    </table>
+</form>
+<hr>
+<a href="/">Back</a>
+</body>
+</html>

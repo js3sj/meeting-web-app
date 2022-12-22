@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>remove-meeting-confirm</title>
+    <style>
+        th, td {
+            padding: 5px;
+        }
+    </style>
+</head>
+<body>
+<h3>Confirm:</h3>
+<hr>
+<div>
+    <table>
+        <thead>
+        </thead>
+        <tbody>
+        <tr>
+            <td th:text="'Meeting [ '+${meetingName}+' ] was successfully deleted.'" style="color: red"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<hr>
+<a th:href="@{/list_all_meetings}">Back</a> |
+<a href="/">Back to index</a>
+</body>
+</html>

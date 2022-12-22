@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>add-meeting-confirm</title>
+    <style>
+        th, td {
+            padding: 5px;
+        }
+    </style>
+</head>
+<body>
+<h3>New Meeting successfully added:</h3>
+<hr>
+<div>
+    <table>
+        <thead>
+        </thead>
+        <tbody>
+        <tr>
+            <td>Name: </td>
+            <td th:text="${meetingDto.name}"></td>
+        </tr>
+        <tr>
+            <td>Description: </td>
+            <td th:text="${meetingDto.description}"></td>
+        </tr>
+        <tr>
+            <td>Category: </td>
+            <td>
+                <th:block th:switch="${meetingDto.category}"
+                          th:with="Category=${T(com.assessment.meeting.models.Category)}">
+                    <span th:case="${Category.CODE_MONKEY}"><strong>CodeMonkey</strong></span>
+                    <span th:case="${Category.HUB}"><strong>Hub</strong></span>
+                    <span th:case="${Category.SHORT}"><strong>Short</strong></span>
+                    <span th:case="${Category.TEAM_BUILDING}"><strong>TeamBuilding</strong></span>
+                </th:block>
+            </td>
+        </tr>
+        <tr>
+            <td>Type: </td>
+            <td>
+                <th:block th:switch="${meetingDto.type}"
+                          th:with="Type=${T(com.assessment.meeting.models.Type)}">
+                    <span th:case="${Type.LIVE}"><strong>Live</strong></span>
+                    <span th:case="${Type.IN_PERSON}"><strong>InPerson</strong></span>
+                </th:block>
+            </td>
+        </tr>
+        <tr>
+            <td>Starts on: </td>
+            <td th:text="${#calendars.format(meetingDto.startDate, 'yyyy-MM-dd HH:mm')}"></td>
+        </tr>
+        <tr>
+            <td>Ends on: </td>
+            <td th:text="${#calendars.format(meetingDto.EndDate, 'yyyy-MM-dd HH:mm')}"></td>
+        </tr>
+        <tr>
+            <td><strong>Responsible person: </strong></td>
+        </tr>
+        <tr>
+            <td>First name: </td>
+            <td th:text="${meetingDto.personsFirstName}"></td>
+        </tr>
+        <tr>
+            <td>Last name: </td>
+            <td th:text="${meetingDto.personsLastName}"></td>
+        </tr>
+        <tr>
+            <td>Added on: </td>
+            <td th:text="${#calendars.format(meetingDto.personAddedTime, 'yyyy-MM-dd HH:mm')}"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<hr>
+<form th:action="@{/add_meeting}">
+    <input type="submit" value="Add new meeting" />
+</form>
+<p><a href="/">Back</a></p>
+</body>
+</html>

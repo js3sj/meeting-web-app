@@ -1,0 +1,191 @@
+[
+  {
+    "personList": [
+      {
+        "firstName": "John",
+        "lastName": "Wick",
+        "date": {
+          "year": 2022,
+          "month": 11,
+          "dayOfMonth": 21,
+          "hourOfDay": 17,
+          "minute": 59,
+          "second": 35
+        },
+        "responsible": true
+      },
+      {
+        "firstName": "Eric",
+        "lastName": "Newman",
+        "date": {
+          "year": 2022,
+          "month": 11,
+          "dayOfMonth": 21,
+          "hourOfDay": 18,
+          "minute": 1,
+          "second": 31
+        },
+        "responsible": false
+      },
+      {
+        "firstName": "Jenny",
+        "lastName": "Lorence",
+        "date": {
+          "year": 2022,
+          "month": 11,
+          "dayOfMonth": 21,
+          "hourOfDay": 18,
+          "minute": 1,
+          "second": 40
+        },
+        "responsible": false
+      },
+      {
+        "firstName": "Fillip",
+        "lastName": "Rough",
+        "date": {
+          "year": 2022,
+          "month": 11,
+          "dayOfMonth": 21,
+          "hourOfDay": 18,
+          "minute": 1,
+          "second": 57
+        },
+        "responsible": false
+      }
+    ],
+    "name": "Project Winter",
+    "description": "Johns Java meet",
+    "category": "SHORT",
+    "type": "LIVE",
+    "startDate": {
+      "year": 2022,
+      "month": 11,
+      "dayOfMonth": 28,
+      "hourOfDay": 9,
+      "minute": 0,
+      "second": 0
+    },
+    "endDate": {
+      "year": 2022,
+      "month": 11,
+      "dayOfMonth": 28,
+      "hourOfDay": 11,
+      "minute": 0,
+      "second": 0
+    }
+  },
+  {
+    "personList": [
+      {
+        "firstName": "Tom",
+        "lastName": "Wood",
+        "date": {
+          "year": 2022,
+          "month": 11,
+          "dayOfMonth": 21,
+          "hourOfDay": 18,
+          "minute": 1,
+          "second": 10
+        },
+        "responsible": true
+      },
+      {
+        "firstName": "Steve",
+        "lastName": "Balmer",
+        "date": {
+          "year": 2022,
+          "month": 11,
+          "dayOfMonth": 21,
+          "hourOfDay": 18,
+          "minute": 2,
+          "second": 35
+        },
+        "responsible": false
+      },
+      {
+        "firstName": "Fillip",
+        "lastName": "Rough",
+        "date": {
+          "year": 2022,
+          "month": 11,
+          "dayOfMonth": 21,
+          "hourOfDay": 18,
+          "minute": 41,
+          "second": 44
+        },
+        "responsible": false
+      }
+    ],
+    "name": "Toms testing analysis",
+    "description": "Toms recap for unit test",
+    "category": "HUB",
+    "type": "IN_PERSON",
+    "startDate": {
+      "year": 2022,
+      "month": 11,
+      "dayOfMonth": 26,
+      "hourOfDay": 14,
+      "minute": 0,
+      "second": 0
+    },
+    "endDate": {
+      "year": 2022,
+      "month": 11,
+      "dayOfMonth": 26,
+      "hourOfDay": 15,
+      "minute": 30,
+      "second": 0
+    }
+  },
+  {
+    "personList": [
+      {
+        "firstName": "Jenny",
+        "lastName": "Lorence",
+        "date": {
+          "year": 2022,
+          "month": 11,
+          "dayOfMonth": 21,
+          "hourOfDay": 18,
+          "minute": 5,
+          "second": 15
+        },
+        "responsible": true
+      },
+      {
+        "firstName": "Tom",
+        "lastName": "Wood",
+        "date": {
+          "year": 2022,
+          "month": 11,
+          "dayOfMonth": 22,
+          "hourOfDay": 8,
+          "minute": 26,
+          "second": 2
+        },
+        "responsible": false
+      }
+    ],
+    "name": "Jennys project LOOM",
+    "description": "New features recap",
+    "category": "CODE_MONKEY",
+    "type": "LIVE",
+    "startDate": {
+      "year": 2023,
+      "month": 0,
+      "dayOfMonth": 4,
+      "hourOfDay": 10,
+      "minute": 0,
+      "second": 0
+    },
+    "endDate": {
+      "year": 2023,
+      "month": 0,
+      "dayOfMonth": 4,
+      "hourOfDay": 12,
+      "minute": 0,
+      "second": 0
+    }
+  }
+]
